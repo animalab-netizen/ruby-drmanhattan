@@ -42,7 +42,7 @@ jobs:
           ruby-version: "3.3"
 
       - name: Publish gem
-        if: ${{ secrets.RUBYGEMS_API_KEY != '' }}
+        if: ${{ env.RUBYGEMS_API_KEY != '' }}
         env:
           RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
         run: |
