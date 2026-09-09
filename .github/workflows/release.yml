@@ -20,7 +20,7 @@ jobs:
           ruby-version: "3.3"
 
       - name: Validate gemspec
-        run: gem build ruby-drmanhatan.gemspec
+        run: gem build ruby-drmanhattan.gemspec
 
       - name: Run tests
         run: ruby test/runtime_test.rb
@@ -49,8 +49,8 @@ jobs:
           mkdir -p "$HOME/.gem"
           printf -- "---\n:rubygems_api_key: %s\n" "$RUBYGEMS_API_KEY" > "$HOME/.gem/credentials"
           chmod 0600 "$HOME/.gem/credentials"
-          gem build ruby-drmanhatan.gemspec
-          gem push ruby-drmanhatan-0.1.0.gem
+          gem build ruby-drmanhattan.gemspec
+          gem push ruby-drmanhattan-0.1.0.gem
 
       - name: Create GitHub Release
         if: startsWith(github.ref, 'refs/tags/v')

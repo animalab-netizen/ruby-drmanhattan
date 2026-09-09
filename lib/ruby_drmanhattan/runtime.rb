@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module RubyDrManhatan
+module RubyDrManhattan
   def self.merge_attributes(*parts)
     parts.compact.reduce({}) { |merged, part| merged.merge(part) }
   end
@@ -15,11 +15,11 @@ module RubyDrManhatan
     end
 
     def with_attribute(key, value)
-      self.class.new(name, RubyDrManhatan.merge_attributes(attributes, { key => value }))
+      self.class.new(name, RubyDrManhattan.merge_attributes(attributes, { key => value }))
     end
 
     def with_attributes(values)
-      self.class.new(name, RubyDrManhatan.merge_attributes(attributes, values))
+      self.class.new(name, RubyDrManhattan.merge_attributes(attributes, values))
     end
   end
 
@@ -76,7 +76,7 @@ module RubyDrManhatan
       attributes = { "app.version" => app_version }
       attributes["platform"] = platform unless platform.nil?
       attributes["environment"] = environment unless environment.nil?
-      RubyDrManhatan.merge_attributes(attributes, extra).freeze
+      RubyDrManhattan.merge_attributes(attributes, extra).freeze
     end
   end
 
@@ -163,7 +163,7 @@ module RubyDrManhatan
       mapped["message.type"] = type unless type.nil?
       mapped["message.correlation_id"] = correlation_id unless correlation_id.nil?
       mapped["message.size_bytes"] = size_bytes.to_s unless size_bytes.nil?
-      RubyDrManhatan.merge_attributes(mapped, attributes).freeze
+      RubyDrManhattan.merge_attributes(mapped, attributes).freeze
     end
   end
 
@@ -185,7 +185,7 @@ module RubyDrManhatan
       mapped["error.type"] = type unless type.nil?
       mapped["error.message"] = message unless message.nil?
       mapped["error.retryable"] = retryable.to_s unless retryable.nil?
-      RubyDrManhatan.merge_attributes(mapped, attributes).freeze
+      RubyDrManhattan.merge_attributes(mapped, attributes).freeze
     end
   end
 
@@ -205,7 +205,7 @@ module RubyDrManhatan
       mapped["close.code"] = code.to_s unless code.nil?
       mapped["close.reason"] = reason unless reason.nil?
       mapped["close.graceful"] = graceful.to_s unless graceful.nil?
-      RubyDrManhatan.merge_attributes(mapped, attributes).freeze
+      RubyDrManhattan.merge_attributes(mapped, attributes).freeze
     end
   end
 
@@ -269,7 +269,7 @@ module RubyDrManhatan
         protocol,
         endpoint,
         session_id,
-        RubyDrManhatan.merge_attributes(reconnect_attributes, attributes)
+        RubyDrManhattan.merge_attributes(reconnect_attributes, attributes)
       )
     end
 
@@ -332,7 +332,7 @@ module RubyDrManhatan
     end
 
     def enrich_protocol_event(name, protocol, endpoint, session_id, attributes)
-      mapped = RubyDrManhatan.merge_attributes(
+      mapped = RubyDrManhattan.merge_attributes(
         { "protocol.name" => protocol.name },
         endpoint.as_attributes,
         attributes
@@ -342,7 +342,7 @@ module RubyDrManhatan
     end
   end
 
-  class DrManhatan
+  class DrManhattan
     def initialize(bus, factory)
       @bus = bus
       @factory = factory

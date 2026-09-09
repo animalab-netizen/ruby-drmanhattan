@@ -1,13 +1,13 @@
-# ruby-drmanhatan
+# ruby-drmanhattan
 
-`ruby-drmanhatan` is the Ruby runtime for the DrManhatan family.
+`ruby-drmanhattan` is the Ruby runtime for the DrManhattan family.
 
 It adapts the same observability concepts to Ruby applications while keeping the API idiomatic to the language.
 
 ## Status
 
-- gem: `ruby-drmanhatan`
-- repository: `ruby-drmanhatan`
+- gem: `ruby-drmanhattan`
+- repository: `ruby-drmanhattan`
 - status: `implemented`
 
 ## Covered contract
@@ -26,24 +26,24 @@ It adapts the same observability concepts to Ruby applications while keeping the
 - `ProtocolClose`
 - `ProtocolSessionTracker`
 - `WebSocketSessionTracker`
-- `DrManhatan`
+- `DrManhattan`
 
 ## Install
 
 ```bash
-gem install ruby-drmanhatan
+gem install ruby-drmanhattan
 ```
 
 ## Example
 
 ```ruby
-require "ruby_drmanhatan"
+require "ruby_drmanhattan"
 
-bus = RubyDrManhatan::DefaultEventBus.new
-factory = RubyDrManhatan::EventFactory.new(
-  metadata: RubyDrManhatan::CommonMetadata.new("1.0.0", platform: "ruby", environment: "prod")
+bus = RubyDrManhattan::DefaultEventBus.new
+factory = RubyDrManhattan::EventFactory.new(
+  metadata: RubyDrManhattan::CommonMetadata.new("1.0.0", platform: "ruby", environment: "prod")
 )
-dr = RubyDrManhatan::DrManhatan.new(bus, factory)
+dr = RubyDrManhattan::DrManhattan.new(bus, factory)
 
 observer = Object.new
 observer.define_singleton_method(:on_event) do |event|
@@ -52,7 +52,7 @@ end
 
 bus.subscribe(observer)
 
-endpoint = RubyDrManhatan::ProtocolEndpoint.new(
+endpoint = RubyDrManhattan::ProtocolEndpoint.new(
   "chat",
   address: "wss://socket.example.com",
   channel: "rooms/general"

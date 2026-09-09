@@ -21,7 +21,7 @@ jobs:
           ruby-version: "3.3"
 
       - name: Validate gemspec
-        run: gem build ruby-drmanhatan.gemspec
+        run: gem build ruby-drmanhattan.gemspec
 
       - name: Run tests
         run: ruby test/runtime_test.rb

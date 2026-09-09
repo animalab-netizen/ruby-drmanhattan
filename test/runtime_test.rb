@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require "minitest/autorun"
-require_relative "../lib/ruby_drmanhatan"
+require_relative "../lib/ruby_drmanhattan"
 
-module RubyDrManhatan
+module RubyDrManhattan
   class Recorder
     include EventObserver
 
@@ -63,12 +63,12 @@ module RubyDrManhatan
       assert_instance_of RuntimeError, errors.first
     end
 
-    def test_drmanhatan_publishes_websocket_lifecycle_and_failure_events
+    def test_drmanhattan_publishes_websocket_lifecycle_and_failure_events
       recorder = Recorder.new
       bus = DefaultEventBus.new
       bus.subscribe(recorder)
 
-      tracker = DrManhatan.new(
+      tracker = DrManhattan.new(
         bus,
         EventFactory.new(metadata: CommonMetadata.new("1.0.0"))
       )
@@ -111,7 +111,7 @@ module RubyDrManhatan
       bus = DefaultEventBus.new
       bus.subscribe(recorder)
 
-      tracker = DrManhatan.new(bus, EventFactory.new)
+      tracker = DrManhattan.new(bus, EventFactory.new)
       session = tracker.protocol_session(
         Protocol::MQTT,
         ProtocolEndpoint.new("broker"),
