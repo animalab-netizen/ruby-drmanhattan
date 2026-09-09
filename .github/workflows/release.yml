@@ -50,7 +50,7 @@ jobs:
           printf -- "---\n:rubygems_api_key: %s\n" "$RUBYGEMS_API_KEY" > "$HOME/.gem/credentials"
           chmod 0600 "$HOME/.gem/credentials"
           gem build ruby-drmanhattan.gemspec
-          gem push ruby-drmanhattan-0.1.0.gem
+          gem push ruby-drmanhattan-0.1.2.gem
 
       - name: Create GitHub Release
         if: startsWith(github.ref, 'refs/tags/v')
